@@ -1,4 +1,5 @@
 class RecipesController < ApplicationController
+	skip_before_action :authenticate_user!, only: [:index]
 
 	def index
 		@recipes = Recipe.all
@@ -6,7 +7,7 @@ class RecipesController < ApplicationController
 
 	def new
 		@recipe = Recipe.new
-		2.times {@recipe.ingredients.build}
+		5.times {@recipe.ingredients.build}
 	end
 
 	def create
@@ -14,12 +15,12 @@ class RecipesController < ApplicationController
 		if @recipe.save
 			redirect_to @recipe, notice: 'Your recipe was sucessfully created.'
 		else
-			render 'new'
+			render 'new', notice: 'There was a problem creating your recipe.'
 		end		
 	end
 
 	def show
-		@recipe = Recipe.find(params[:id])
+		@recipe = Recipe.find_by(params[:id])
 	end
 
 	private

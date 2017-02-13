@@ -1,0 +1,9 @@
+<h1><%= @user.email %></h1>
+
+<p>These are all of <%= @user.email %>'s recipes.</p>
+
+<ul>
+	<% @user.recipes.each do |recipe| %>
+		<li><%= link_to recipe.name, recipe_path %></li>
+	<% end %>
+</ul>

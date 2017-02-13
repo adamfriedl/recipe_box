@@ -1,4 +1,5 @@
 <h1><%= @recipe.name %></h1>
+<p>by <%= link_to @recipe.user.email, user_path(@recipe.user) %></p>
 
 <h3>Ingredients</h3>
 <ul>
