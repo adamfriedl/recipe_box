@@ -7,7 +7,7 @@ class RecipesController < ApplicationController
 
 	def new
 		@recipe = Recipe.new
-		5.times {@recipe.ingredients.build}
+		2.times {@recipe.ingredients.build}
 	end
 
 	def create
@@ -20,7 +20,7 @@ class RecipesController < ApplicationController
 	end
 
 	def show
-		@recipe = Recipe.find_by(params[:id])
+		@recipe = Recipe.find(params[:id])
 	end
 
 	private
