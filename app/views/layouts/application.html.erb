@@ -16,7 +16,8 @@
     <%= link_to 'Ingredients', ingredients_path %>
     </strong>
     <br>
-    <em>Hi, <%= link_to current_user.email, user_path(current_user) %></em> (<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>)
+    <em>Hi, <%= link_to current_user.email, user_path(current_user) %></em> (<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>)<br>
+    <%= link_to 'Create a new recipe', new_user_recipe_path(current_user) %>
     <% end %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>

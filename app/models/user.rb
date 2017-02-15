@@ -15,4 +15,8 @@ class User < ApplicationRecord
 		end
   end
 
+  def created_on
+  	self.created_at.strftime('%B %e, %Y')
+  end
+
 end

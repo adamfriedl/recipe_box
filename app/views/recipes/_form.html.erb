@@ -1,21 +1,19 @@
-<% if @recipe.errors.any? %>
-  <div id="error_explanation">
-    <h2>
-      <%= pluralize(@recipe.errors.count, "error") %>
-      prohibited this user from being saved:
-    </h2>
- 
-    <ul>
-    <% @recipe.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
+<%= form_for(@recipe, url: user_recipes_path) do |f| %>
 
-<%= form_for @recipe do |f| %>
-
-  <%= f.hidden_field :user_id, value: current_user.id %>
+  <% if @recipe.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@recipe.errors.count, "error") %>
+        prohibited this user from being saved:
+      </h2>
+   
+      <ul>
+      <% @recipe.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
   <%= f.label :name %><br>
   <%= f.text_field :name %><br>
@@ -26,15 +24,10 @@
   Ingredients:<br>
   <ul>
     <%= f.fields_for :ingredients do |ingredients_form| %>
-    <li><%= ingredients_form.label :name %>
-    <%= ingredients_form.text_field :name %>
-      <%= f.fields_for :recipe_ingredients do |ri_form| %>
-        <%= ri_form.label :quantity %>
-        <%= ri_form.text_field :quantity %>
-        <%= ri_form.label :unit %>
-        <%= ri_form.text_field :unit %>
+      <li><%= ingredients_form.label :name %>
+      <%= ingredients_form.text_field :name %>
+      <% end %>
     </li>
-    <% end %>
   </ul>
 
   <%= f.submit %>
