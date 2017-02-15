@@ -1,0 +1,9 @@
+	<h1>All Recipes</h1>
+
+	<p>Thanks to <%= link_to recipes.most_recent_contributor.email, user_path(recipes.most_recent_contributor) %></a> for contributing the most recent recipe!</p>
+
+	<ul>
+		<% recipes.each do |recipe| %>
+			<li><%= link_to recipe.name, recipe_path(recipe) %></li>
+		<% end %>
+	</ul>
