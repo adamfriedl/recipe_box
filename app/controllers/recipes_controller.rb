@@ -12,13 +12,12 @@ class RecipesController < ApplicationController
 
 	def new
 		@recipe = Recipe.new
-		2.times {@recipe.ingredients.build}
+		5.times {@recipe.ingredients.build}
 	end
 
 	def create
 		user = User.find(params[:user_id])
 		@recipe = user.recipes.new(recipe_params)
-		binding.pry
 		if @recipe.save
 			redirect_to @recipe, notice: 'Your recipe was sucessfully created.'
 		else
@@ -36,7 +35,7 @@ class RecipesController < ApplicationController
 	private
 
 	def recipe_params
-		params.require(:recipe).permit(:name, :instructions, :user_id, recipe_ingredients_attributes: [:id, :quantity], ingredients_attributes: [:id, :name, :quantity])
+		params.require(:recipe).permit(:name, :instructions, :user_id, ingredients_attributes: [:id, :name, :quantity])
 	end
 	
 end

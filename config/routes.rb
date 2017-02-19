@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
 
+  authenticated :user do 
+  	root 'recipes#index', as: :authenticated_root
+  end
+  
   root 'welcome#home'
 
   resources :ingredients

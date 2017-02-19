@@ -1,0 +1,9 @@
+	<% if recipes = nil %>
+
+	<p>Thanks to <%= link_to recipes.most_recent_contributor.email, user_path(recipes.most_recent_contributor) %></a> for contributing the most recent recipe!</p>
+
+	<% else %>
+
+	<p>Thanks for joining the Recipe Box! Start us off by <%= link_to 'contributing the first recipe!', new_user_recipe_path(current_user) %></p>
+
+	<% end %>
