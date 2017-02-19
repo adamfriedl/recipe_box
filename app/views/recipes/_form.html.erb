@@ -4,7 +4,7 @@
     <div id="error_explanation">
       <h2>
         <%= pluralize(@recipe.errors.count, "error") %>
-        prohibited this user from being saved:
+        prohibited this recipe from being saved:
       </h2>
    
       <ul>
@@ -26,7 +26,11 @@
     <%= f.fields_for :ingredients do |ingredients_form| %>
       <li><%= ingredients_form.label :name %>
       <%= ingredients_form.text_field :name %>
-      <% end %>
+      <label for="recipe_ingredients_quantity">Quantity</label>
+      <input type="text" name="recipe[recipe_ingredients_attributes][<%= ingredients_form.index %>][quantity]" %>
+    <% end %>
+
+
     </li>
   </ul>
 

@@ -9,11 +9,22 @@ class Recipe < ApplicationRecord
 	# Scope method
   scope :most_recent_contributor, -> { order(created_at: :desc).first.user }
 
-	# This creates duplicate nested items. Cannot use in final project.
-	accepts_nested_attributes_for :ingredients, :reject_if => proc { |attributes| attributes['name'].blank? }
+	def recipe_ingredients_attributes=(recipe_ingredients)
+		# recipe_ingredients.values.each do |value|
+		# 	if value[:quantity] != ''
+		# 		ri = 
+		# 		ri.update
+		# 	end
+		# end
+	end
 
-	# def ingredients_attributes=(ingredient)
-	# 	self.ingredients = Ingredient.find_or_create_by(name: ingredient.name)
-	# 	self.ingredient.update(ingredient)
-	# end
+	def ingredients_attributes=(ingredients)
+		ingredients.values.each do |value|
+			if value[:name] != ''
+				ingredient = Ingredient.find_or_create_by!(name: value[:name])
+				self.ingredients << ingredient
+			end
+		end	
+	end
+
 end
