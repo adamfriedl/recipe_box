@@ -11,12 +11,4 @@ class IngredientsController < ApplicationController
 	def create
 	end
 
-	private
-
-	def ingredient_params
-		params.require(:ingredient).permit(:name, :recipe_ingredients_attributes: [:id, :quantity])
-		
-	end
-
-	
 end

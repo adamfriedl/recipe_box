@@ -9,15 +9,6 @@ class Recipe < ApplicationRecord
 	# Scope method
   scope :most_recent_contributor, -> { order(created_at: :desc).first.user }
 
-	def recipe_ingredients_attributes=(recipe_ingredients)
-		# recipe_ingredients.values.each do |value|
-		# 	if value[:quantity] != ''
-		# 		ri = 
-		# 		ri.update
-		# 	end
-		# end
-	end
-
 	def ingredients_attributes=(ingredients)
 		ingredients.values.each do |value|
 			if value[:name] != ''
