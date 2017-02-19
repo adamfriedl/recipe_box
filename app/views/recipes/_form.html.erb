@@ -27,11 +27,9 @@
       <li><%= ingredients_form.label :name %>
       <%= ingredients_form.text_field :name %>
       <label for="recipe_ingredients_quantity">Quantity</label>
-      <input type="text" name="recipe[recipe_ingredients_attributes][<%= ingredients_form.index %>][quantity]" %>
-    <% end %>
-
-
+      <input type="text" name="recipe[ingredients_attributes][<%= ingredients_form.index %>][quantity]" %>
     </li>
+    <% end %>
   </ul>
 
   <%= f.submit %>

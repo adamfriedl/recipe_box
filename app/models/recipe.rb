@@ -22,7 +22,7 @@ class Recipe < ApplicationRecord
 		ingredients.values.each do |value|
 			if value[:name] != ''
 				ingredient = Ingredient.find_or_create_by!(name: value[:name])
-				self.ingredients << ingredient
+				self.recipe_ingredients.build(ingredient_id: ingredient.id, quantity: value[:quantity])
 			end
 		end	
 	end
