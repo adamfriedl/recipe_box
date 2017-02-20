@@ -5,7 +5,7 @@
 <ul>
 	<% @recipe.recipe_ingredients.each do |ri| %>
 	  <li><%= ri.ingredient.name %> - 
-	  <%= ri.quantity %></li>
+	  <%= ri.quantity %> units</li>
 <% end %>
 </ul>
 
